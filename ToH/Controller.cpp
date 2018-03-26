@@ -60,11 +60,7 @@ void Controller::init(){
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                 myWindow.close();
             }
-            
-            
         }
-        
-        auto rods=myView.getRods(myModel.RODS, myWindow.getSize().x);
         
         if (duration > 1.0f){
             duration=0;
@@ -76,6 +72,8 @@ void Controller::init(){
         myWindow.clear(sf::Color::Black);
         
         myWindow.draw(shape);
+        
+        auto rods=myView.getRods(myModel,myWindow);
         for (auto rod: rods)
             myWindow.draw(rod);
         

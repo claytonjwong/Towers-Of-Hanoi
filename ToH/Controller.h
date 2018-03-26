@@ -17,7 +17,7 @@ class Controller {
 public:
     /* constructors */
     Controller(Model model, View view)
-        : myWindow(sf::VideoMode(1200, 800), "SFML window"), myModel{model}, myView{view} {}
+        : myWindow(sf::VideoMode(1200, 800), "Towers of Hanoi"), myModel{model}, myView{view} {}
     
     void init();
     

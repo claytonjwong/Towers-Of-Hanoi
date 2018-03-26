@@ -11,22 +11,22 @@
 
 using namespace std;
 
-int Model::getDisks() const {
-    return myDisks;
+int Model::getDiskCount() const {
+    return myDiskCount;
 }
 
-vector<vector<int>> Model::getRods() const {
-    return myRods;
+vector<vector<int>> Model::getDisks() const {
+    return myDisks;
 }
 
 /* helpers */
 void Model::generateMoves(){
-    go(myDisks,SRC,DST,AUX,myMoves);
+    go(myDiskCount,SRC,DST,AUX,myMoves);
 }
 
 void Model::initializeRods(){
-    for (int i=myDisks; i>0; --i)
-        myRods[SRC].push_back(i);
+    for (int i=myDiskCount; i>0; --i)
+        myDisks[SRC].push_back(i);
 }
 
 void Model::go(int N, int src, int dst, int aux, vector<Move>& moves){

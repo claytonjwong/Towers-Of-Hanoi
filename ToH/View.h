@@ -10,6 +10,7 @@
 #define View_h
 
 #include <SFML/Window/Window.hpp>
+#include "Model.h"
 
 class View {
 public:
@@ -20,8 +21,7 @@ public:
     /* accessors */
     //int getDirection() const;
     
-    /* mutators */
-    std::vector<sf::RectangleShape> getRods(int cnt, int width);
+    std::vector<sf::RectangleShape> getRods(const Model& model, const sf::Window& window);
     //void drawDisks(sf::Window& window);
     //bool moveDisk(sf::Window& window, int src, int dst);
     //bool isAutoPlay() const;
@@ -29,10 +29,11 @@ public:
     /* helpers */
     
 private:
-    
     int direction;
     bool autoPlay;
     int state;
+    
+    sf::RectangleShape getDisk(int x, int y, int width, sf::Color& color);
 };
 
 #endif /* View_h */

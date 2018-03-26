@@ -16,23 +16,23 @@ class Model {
 public:
     
     /* constructors */
-    Model(unsigned int disks) : myDisks{disks}, myCurrMove{nullptr}, myRods(RODS,std::vector<int>()) {
+    Model(unsigned int disks) : myDiskCount{disks}, myCurrMove{nullptr}, myDisks(RODS,std::vector<int>()) {
         initializeRods();
         generateMoves();
     }
-    Model(const Model& src) : Model(src.getDisks()) {}
+    Model(const Model& src) : Model(src.getDiskCount()) {}
     
     /* accessors */
-    std::vector<std::vector<int>> getRods() const;
-    int getDisks() const;
+    std::vector<std::vector<int>> getDisks() const;
+    int getDiskCount() const;
     
     const unsigned int RODS=3,SRC=0,DST=1,AUX=2;
 
 private:
-    const unsigned int myDisks;
+    const unsigned int myDiskCount;
     std::unique_ptr<Move> myCurrMove;
     std::vector<Move> myMoves;
-    std::vector<std::vector<int>> myRods;
+    std::vector<std::vector<int>> myDisks;
 
     /* helpers */
     void initializeRods();

@@ -21,14 +21,12 @@ public:
     //int getDirection() const;
     
     /* mutators */
-    void drawRods(sf::Window& window);
-    void drawDisks(sf::Window& window);
-    bool moveDisk(sf::Window& window, int src, int dst);
+    std::vector<sf::RectangleShape> getRods(int cnt, int width);
+    //void drawDisks(sf::Window& window);
+    //bool moveDisk(sf::Window& window, int src, int dst);
     //bool isAutoPlay() const;
     
     /* helpers */
-    
-    
     
 private:
     

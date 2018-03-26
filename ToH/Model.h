@@ -26,8 +26,9 @@ public:
     std::vector<std::vector<int>> getRods() const;
     int getDisks() const;
     
-private:
     const unsigned int RODS=3,SRC=0,DST=1,AUX=2;
+
+private:
     const unsigned int myDisks;
     std::unique_ptr<Move> myCurrMove;
     std::vector<Move> myMoves;

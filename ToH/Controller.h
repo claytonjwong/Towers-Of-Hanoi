@@ -17,15 +17,15 @@ class Controller {
 public:
     /* constructors */
     Controller(Model model, View view)
-        : window(sf::VideoMode(800, 600), "SFML window"), model{model}, view{view} {}
+        : myWindow(sf::VideoMode(1200, 800), "SFML window"), myModel{model}, myView{view} {}
     
     void init();
     
     /* accessors */
 private:
-    sf::RenderWindow window;
-    Model model;
-    View view;
+    sf::RenderWindow myWindow;
+    Model myModel;
+    View myView;
 };
 
 #endif /* Controller_h */

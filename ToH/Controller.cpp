@@ -11,6 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include "ResourcePath.hpp"
 #include "Controller.h"
+#include "View.h"
 
 void Controller::init(){
     
@@ -19,7 +20,7 @@ void Controller::init(){
     if (!icon.loadFromFile(resourcePath() + "icon.png")) {
         return EXIT_FAILURE;
     }
-    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+    myWindow.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     
     // Load a music to play
     sf::Music music;
@@ -40,7 +41,7 @@ void Controller::init(){
     int x=50,y=0;
     
     // Start the game loop
-    while (window.isOpen())
+    while (myWindow.isOpen())
     {
         
         sf::Time dt=clock.restart();
@@ -48,20 +49,22 @@ void Controller::init(){
         
         // Process events
         sf::Event event;
-        while (window.pollEvent(event))
+        while (myWindow.pollEvent(event))
         {
             // Close window: exit
             if (event.type == sf::Event::Closed) {
-                window.close();
+                myWindow.close();
             }
             
             // Escape pressed: exit
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                window.close();
+                myWindow.close();
             }
             
             
         }
+        
+        auto rods=myView.getRods(myModel.RODS, myWindow.getSize().x);
         
         if (duration > 1.0f){
             duration=0;
@@ -70,9 +73,11 @@ void Controller::init(){
         }
         
         // Clear screen
-        window.clear(sf::Color::Black);
+        myWindow.clear(sf::Color::Black);
         
-        window.draw(shape);
+        myWindow.draw(shape);
+        for (auto rod: rods)
+            myWindow.draw(rod);
         
         
         // Draw the sprite
@@ -82,6 +87,6 @@ void Controller::init(){
         //window.draw(text);
         
         // Update the window
-        window.display();
+        myWindow.display();
     }
 }

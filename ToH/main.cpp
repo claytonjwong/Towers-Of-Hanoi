@@ -16,11 +16,7 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-
-// Here is a small helper for you! Have a look.
-#include "ResourcePath.hpp"
-
-
+#include "ResourcePath.hpp" // Here is a small helper for you! Have a look.
 #include "Model.h"
 #include "View.h"
 #include "Controller.h"
@@ -28,101 +24,12 @@
 int main(int, char const**)
 {
     
-    
-    Model model(3);
-    View view;
-    Controller controller(model,view);
+    sf::Vector2i dim(1500,500);
+    int disks=6;
+    Model model(disks);
+    View view(model,dim);
+    Controller controller(model,view,dim);
     controller.init();
 
-    /*
-    // Set the Icon
-    sf::Image icon;
-    if (!icon.loadFromFile(resourcePath() + "icon.png")) {
-        return EXIT_FAILURE;
-    }
-    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-
-    // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile(resourcePath() + "cute_image.jpg")) {
-        return EXIT_FAILURE;
-    }
-    sf::Sprite sprite(texture);
-
-    // Create a graphical text to display
-    sf::Font font;
-    if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
-        return EXIT_FAILURE;
-    }
-    sf::Text text("Hello SFML", font, 50);
-    text.setFillColor(sf::Color::Black);
-
-    // Load a music to play
-    sf::Music music;
-    if (!music.openFromFile(resourcePath() + "nice_music.ogg")) {
-        return EXIT_FAILURE;
-    }
-
-    // Play the music
-    music.play();
-    
-    sf::Clock clock;
-    float duration=float();
-    
-
-    sf::Vector2f size(50,50);
-    sf::RectangleShape shape(size);
-    shape.setFillColor(sf::Color(100,250,50));
-    
-    int x=50,y=50;
-    
-    // Start the game loop
-    while (window.isOpen())
-    {
-
-        
-        
-        sf::Time dt=clock.restart();
-        duration+=dt.asSeconds();
-        
-        // Process events
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // Close window: exit
-            if (event.type == sf::Event::Closed) {
-                window.close();
-            }
-
-            // Escape pressed: exit
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                window.close();
-            }
-            
-
-        }
-        
-        if (duration > 1.0f){
-            duration=0;
-            x+=10;
-            shape.move(x,y);
-        }
-        
-        // Clear screen
-        window.clear(sf::Color::Black);
-
-        window.draw(shape);
-
-
-        // Draw the sprite
-        //window.draw(sprite);
-
-        // Draw the string
-        //window.draw(text);
-
-        // Update the window
-        window.display();
-    }
-*/
     return EXIT_SUCCESS;
 }

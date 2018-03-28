@@ -15,9 +15,11 @@
 
 class Controller {
 public:
+    enum State { WAITING, MOVING };
+    
     /* constructors */
-    Controller(Model model, View view)
-        : myWindow(sf::VideoMode(1200, 800), "Towers of Hanoi"), myModel{model}, myView{view} {}
+    Controller(Model model, View view, sf::Vector2i dim)
+    : myWindow(sf::VideoMode(dim.x,dim.y), "Towers of Hanoi"), myModel{model}, myView{view}, myState{WAITING} {}
     
     void init();
     
@@ -26,6 +28,7 @@ private:
     sf::RenderWindow myWindow;
     Model myModel;
     View myView;
+    int myState;
 };
 
 #endif /* Controller_h */

@@ -10,8 +10,11 @@
 #define Move_h
 
 struct Move {
-    const int src,dst;
-    Move(int src, int dst) : src{src}, dst{dst} {}
+    int diskID,srcRod,dstRod;
+    Move() : diskID{-1}, srcRod{-1}, dstRod{-1} {}
+    Move(int disk, int src, int dst) : diskID{disk}, srcRod{src}, dstRod{dst} {}
+    Move(const Move& rhs)=default;
+    Move& operator=(const Move& rhs)=default;
 };
 
 #endif /* Move_h */

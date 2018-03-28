@@ -16,6 +16,8 @@
 		A9808AD9206722BE00D5F373 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9808AD8206722BE00D5F373 /* View.cpp */; };
 		A9808ADB2067276700D5F373 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9808ADA2067276700D5F373 /* Controller.cpp */; };
 		A9808ADD206728BB00D5F373 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9808ADC206728BB00D5F373 /* Model.cpp */; };
+		A9808B1B206AD3C500D5F373 /* Disk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9808B19206AD3C500D5F373 /* Disk.cpp */; };
+		A9808B1E206AD3CE00D5F373 /* Rod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9808B1C206AD3CE00D5F373 /* Rod.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,10 @@
 		A9808AD8206722BE00D5F373 /* View.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = View.cpp; sourceTree = "<group>"; };
 		A9808ADA2067276700D5F373 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		A9808ADC206728BB00D5F373 /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
+		A9808B19206AD3C500D5F373 /* Disk.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Disk.cpp; sourceTree = "<group>"; };
+		A9808B1A206AD3C500D5F373 /* Disk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Disk.h; sourceTree = "<group>"; };
+		A9808B1C206AD3CE00D5F373 /* Rod.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rod.cpp; sourceTree = "<group>"; };
+		A9808B1D206AD3CE00D5F373 /* Rod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rod.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,8 @@
 		A9808ABE2065E55800D5F373 /* ToH */ = {
 			isa = PBXGroup;
 			children = (
+				A9808B1C206AD3CE00D5F373 /* Rod.cpp */,
+				A9808B1D206AD3CE00D5F373 /* Rod.h */,
 				A9808AC12065E55800D5F373 /* ResourcePath.mm */,
 				A9808AC32065E55800D5F373 /* ResourcePath.hpp */,
 				A9808AC42065E55800D5F373 /* main.cpp */,
@@ -79,6 +87,8 @@
 				A9808AD8206722BE00D5F373 /* View.cpp */,
 				A9808ADA2067276700D5F373 /* Controller.cpp */,
 				A9808ADC206728BB00D5F373 /* Model.cpp */,
+				A9808B19206AD3C500D5F373 /* Disk.cpp */,
+				A9808B1A206AD3C500D5F373 /* Disk.h */,
 			);
 			path = ToH;
 			sourceTree = "<group>";
@@ -190,9 +200,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9808B1B206AD3C500D5F373 /* Disk.cpp in Sources */,
 				A9808AD9206722BE00D5F373 /* View.cpp in Sources */,
 				A9808AC52065E55800D5F373 /* main.cpp in Sources */,
 				A9808ADD206728BB00D5F373 /* Model.cpp in Sources */,
+				A9808B1E206AD3CE00D5F373 /* Rod.cpp in Sources */,
 				A9808AC22065E55800D5F373 /* ResourcePath.mm in Sources */,
 				A9808ADB2067276700D5F373 /* Controller.cpp in Sources */,
 			);

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Clayton Wong. All rights reserved.
 //
 
+#include <iostream>
 #include <stdio.h>
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
@@ -31,22 +32,15 @@ void Controller::init(){
     // Play the music
     music.play();
     
-    sf::Clock clock;
-    float duration=float();
+    sf::Clock waitClock,moveClock;
+    sf::Time waitTime=waitClock.restart(),moveTime=moveClock.restart();
+    float waitDuration=0,moveDuration=0;
+    myState=WAITING;
     
-    sf::Vector2f size(50,50);
-    sf::RectangleShape shape(size);
-    shape.setFillColor(sf::Color(100,250,50));
-    
-    int x=50,y=0;
-    
+    Move currMove;
     // Start the game loop
     while (myWindow.isOpen())
     {
-        
-        sf::Time dt=clock.restart();
-        duration+=dt.asSeconds();
-        
         // Process events
         sf::Event event;
         while (myWindow.pollEvent(event))
@@ -62,27 +56,80 @@ void Controller::init(){
             }
         }
         
-        if (duration > 1.0f){
-            duration=0;
-            x+=10;
-            shape.move(x,y);
+        auto rods=myView.getRods();
+        auto disks=myView.getDisks();
+        
+        /*
+        if (myState==WAITING){
+            if (waitDuration==0){
+                waitTime=waitClock.restart();
+            }
+            
+            waitDuration+=waitTime.asSeconds();
+            
+            if (waitDuration > 10.0f){ // WAITING to MOVING
+                moveDuration=0;
+                myState=MOVING;
+            }
         }
+        if (myState==MOVING){
+            if (moveDuration==0){
+                currMove=myModel.getNextMove();
+                
+                std::cout << "current move: "
+                << " disk=" << currMove.diskID
+                << " src=" << currMove.srcRod
+                << " dst=" << currMove.dstRod
+                << std::endl;
+                
+                disks[currMove.diskID].setState(Disk::MOVING);
+                moveTime=moveClock.restart();
+            }
+
+            if (disks[currMove.diskID].getState()==Disk::WAITING){ // MOVING to WAITING
+                rods[currMove.srcRod].decrementDiskHeight(Disk::HEIGHT);
+                rods[currMove.dstRod].incrementDiskHeight(Disk::HEIGHT);
+                waitDuration=0;
+                myState=WAITING;
+                
+                
+            }
+            
+            moveDuration+=moveTime.asSeconds();
+            
+            if (moveDuration > 10.0f){
+                
+                for (int i=0; i<disks.size(); ++i){
+                    //for (auto disk: disks){
+                    std::cout << "disk " << i
+                    << ": x=" << disks[i].getShape().getPosition().x
+                    << " y=" << disks[i].getShape().getPosition().y << std::endl;
+                }
+                
+                moveDuration=0;
+                disks[currMove.diskID].move(currMove,rods);
+                
+                for (int i=0; i<disks.size(); ++i){
+                    //for (auto disk: disks){
+                    std::cout << "disk " << i
+                    << ": x=" << disks[i].getShape().getPosition().x
+                    << " y=" << disks[i].getShape().getPosition().y << std::endl;
+                }
+            }
+        }
+        */
         
         // Clear screen
         myWindow.clear(sf::Color::Black);
         
-        myWindow.draw(shape);
         
-        auto rods=myView.getRods(myModel,myWindow);
         for (auto rod: rods)
-            myWindow.draw(rod);
+            myWindow.draw(rod.getShape());
         
-        
-        // Draw the sprite
-        //window.draw(sprite);
-        
-        // Draw the string
-        //window.draw(text);
+
+        for (auto disk: disks){
+            myWindow.draw(disk.getShape());
+        }
         
         // Update the window
         myWindow.display();

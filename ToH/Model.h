@@ -11,31 +11,40 @@
 
 #include "Move.h"
 #include <vector>
+#include <memory>
 
 class Model {
 public:
     
     /* constructors */
-    Model(unsigned int disks) : myDiskCount{disks}, myCurrMove{nullptr}, myDisks(RODS,std::vector<int>()) {
-        initializeRods();
+    Model(unsigned int disks) : myCurrMoveIndex{-1}/*, myDisks(RODS,std::vector<int>())*/ {
+        myDiskCount=disks>MAX_DISKS ? MAX_DISKS : disks;
         generateMoves();
     }
     Model(const Model& src) : Model(src.getDiskCount()) {}
     
     /* accessors */
     std::vector<std::vector<int>> getDisks() const;
+    
     int getDiskCount() const;
     
-    const unsigned int RODS=3,SRC=0,DST=1,AUX=2;
+    Move getNextMove() {
+        if (++myCurrMoveIndex < myMoves.size())
+            return myMoves[myCurrMoveIndex];
+        myCurrMoveIndex=(int)myMoves.size()-1;
+        return myMoves[myCurrMoveIndex];
+    }
+    
+    const unsigned int MAX_DISKS=6,RODS=3,SRC=0,DST=1,AUX=2;
 
 private:
-    const unsigned int myDiskCount;
-    std::unique_ptr<Move> myCurrMove;
+    unsigned int myDiskCount;
+    int myCurrMoveIndex;
     std::vector<Move> myMoves;
-    std::vector<std::vector<int>> myDisks;
+    //std::vector<std::vector<int>> myDisks;
 
     /* helpers */
-    void initializeRods();
+    //void initializeRods();
     void generateMoves();
     void go(int N, int src, int dst, int aux, std::vector<Move>& moves);
 };

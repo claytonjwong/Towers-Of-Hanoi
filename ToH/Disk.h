@@ -34,7 +34,7 @@ public:
     
 private:
     sf::RectangleShape myShape;
-    int myState=WAITING;
+    State myState=WAITING;
     int myMoveState=STATIONARY;
 };
 

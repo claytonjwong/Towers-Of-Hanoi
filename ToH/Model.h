@@ -16,36 +16,32 @@
 class Model {
 public:
     
+    const unsigned int MAX_DISKS=6,RODS=3,SRC=0,DST=1,AUX=2;
+    
     /* constructors */
     Model(unsigned int disks) : myCurrMoveIndex{-1} {
         myDiskCount=disks>MAX_DISKS ? MAX_DISKS : disks;
         generateMoves();
     }
     Model(const Model& src) : Model(src.getDiskCount()) {}
-    
     Model& operator=(const Model& rhs)=default;
     
     /* accessors */
-    std::vector<std::vector<int>> getDisks() const;
-    
     int getDiskCount() const;
-    
+
+    /* mutators */
     Move getNextMove() {
         if (++myCurrMoveIndex < myMoves.size())
             return myMoves[myCurrMoveIndex];
         return Move(Move::DONE,Move::DONE,Move::DONE);
     }
-    
-    const unsigned int MAX_DISKS=6,RODS=3,SRC=0,DST=1,AUX=2;
 
 private:
     unsigned int myDiskCount;
     int myCurrMoveIndex;
     std::vector<Move> myMoves;
-    //std::vector<std::vector<int>> myDisks;
 
     /* helpers */
-    //void initializeRods();
     void generateMoves();
     void go(int N, int src, int dst, int aux, std::vector<Move>& moves);
 };

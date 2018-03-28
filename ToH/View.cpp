@@ -42,7 +42,6 @@ myColors{sf::Color(255,0,0),sf::Color(255,127,0),sf::Color(255,255,0),
         myRods[model.SRC].incrementDiskHeight(Disk::HEIGHT);
     }
     reverse(myDisks.begin(),myDisks.end());
-    
 }
 
 void View::moveDisk(Move& m){

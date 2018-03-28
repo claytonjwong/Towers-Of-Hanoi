@@ -21,9 +21,7 @@ sf::RectangleShape Disk::getShape() const{
 }
 
 Disk::State Disk::getState() const{
-    if (myState==WAITING)
-        return WAITING;
-    return MOVING;
+    return myState;
 }
 
 void Disk::setState(Disk::State state){

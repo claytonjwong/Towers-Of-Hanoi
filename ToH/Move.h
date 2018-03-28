@@ -11,7 +11,8 @@
 
 struct Move {
     int diskID,srcRod,dstRod;
-    Move() : diskID{-1}, srcRod{-1}, dstRod{-1} {}
+    static const int INIT=-1,DONE=-2;
+    Move() : diskID{INIT}, srcRod{INIT}, dstRod{INIT} {}
     Move(int disk, int src, int dst) : diskID{disk}, srcRod{src}, dstRod{dst} {}
     Move(const Move& rhs)=default;
     Move& operator=(const Move& rhs)=default;

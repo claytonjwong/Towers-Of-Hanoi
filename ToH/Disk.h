@@ -28,7 +28,9 @@ public:
     Disk::State getState() const;
     void setState(Disk::State state);
     
-    void move(Move& m, std::vector<Rod>& rods);
+    void setPosition(sf::Vector2f pos);
+    
+    
     
 private:
     sf::RectangleShape myShape;

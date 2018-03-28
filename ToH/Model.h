@@ -31,8 +31,7 @@ public:
     Move getNextMove() {
         if (++myCurrMoveIndex < myMoves.size())
             return myMoves[myCurrMoveIndex];
-        myCurrMoveIndex=(int)myMoves.size()-1;
-        return myMoves[myCurrMoveIndex];
+        return Move(Move::DONE,Move::DONE,Move::DONE);
     }
     
     const unsigned int MAX_DISKS=6,RODS=3,SRC=0,DST=1,AUX=2;

@@ -31,6 +31,16 @@ public:
     //bool moveDisk(sf::Window& window, int src, int dst);
     //bool isAutoPlay() const;
     
+    void moveDisk(Move& m){
+        int x=myRods[m.dstRod].getShape().getPosition().x-myDisks[m.diskID].getShape().getSize().x/2;
+        int y=myRods[m.dstRod].getDiskHeight();
+        myDisks[m.diskID].setPosition(sf::Vector2f(x,y));
+        myRods[m.srcRod].decrementDiskHeight(Disk::HEIGHT);
+        myRods[m.dstRod].incrementDiskHeight(Disk::HEIGHT);
+    }
+    
+
+    
     /* helpers */
     
 private:

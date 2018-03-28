@@ -15,7 +15,7 @@
 
 class Controller {
 public:
-    enum State { WAITING, MOVING };
+    enum State { WAITING, MOVING, DONE };
     
     /* constructors */
     Controller(Model model, View view, sf::Vector2i dim)

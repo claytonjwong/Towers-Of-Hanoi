@@ -59,7 +59,7 @@ void Controller::init(){
         auto rods=myView.getRods();
         auto disks=myView.getDisks();
         
-        /*
+        
         if (myState==WAITING){
             if (waitDuration==0){
                 waitTime=waitClock.restart();
@@ -68,10 +68,42 @@ void Controller::init(){
             waitDuration+=waitTime.asSeconds();
             
             if (waitDuration > 10.0f){ // WAITING to MOVING
-                moveDuration=0;
+                waitDuration=0;
                 myState=MOVING;
+                
+                /*
+                for (int i=0; i<disks.size(); ++i){
+                    std::cout << "disk " << i
+                    << ": x=" << disks[i].getShape().getPosition().x
+                    << " y=" << disks[i].getShape().getPosition().y << std::endl;
+                }
+                std::cout << std::endl;
+                */
+                
+                currMove=myModel.getNextMove();
+            
+                if (currMove.diskID==Move::DONE){
+                    myState=DONE;
+                } else {
+                    myView.moveDisk(currMove);
+                    
+                    /*
+                    disks=myView.getDisks();
+                    for (int i=0; i<disks.size(); ++i){
+                        //for (auto disk: disks){
+                        std::cout << "disk " << i
+                        << ": x=" << disks[i].getShape().getPosition().x
+                        << " y=" << disks[i].getShape().getPosition().y << std::endl;
+                    }
+                    std::cout << std::endl << std::endl << std::endl;
+                    */
+                    myState=WAITING;
+                }
+                
             }
         }
+        
+        /*
         if (myState==MOVING){
             if (moveDuration==0){
                 currMove=myModel.getNextMove();
@@ -97,7 +129,7 @@ void Controller::init(){
             
             moveDuration+=moveTime.asSeconds();
             
-            if (moveDuration > 10.0f){
+            if (moveDuration > 100.0f){
                 
                 for (int i=0; i<disks.size(); ++i){
                     //for (auto disk: disks){
@@ -117,7 +149,8 @@ void Controller::init(){
                 }
             }
         }
-        */
+         */
+        
         
         // Clear screen
         myWindow.clear(sf::Color::Black);

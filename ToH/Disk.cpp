@@ -30,7 +30,7 @@ void Disk::setState(Disk::State state){
     myState=state;
 }
 
-void Disk::move(Move& m, std::vector<Rod>& rods){
-    int x=rods[m.dstRod].getShape().getPosition().x,y=rods[m.dstRod].getDiskHeight();
-    myShape.move(x,y);
+void Disk::setPosition(sf::Vector2f pos){
+    myShape.setPosition(pos);
 }
+

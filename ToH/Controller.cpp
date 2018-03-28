@@ -29,8 +29,14 @@ void Controller::init(){
         return EXIT_FAILURE;
     }
     
+    // load move sound to play
+    sf::Music moveSound;
+    if (!moveSound.openFromFile(resourcePath() + "move.ogg")) {
+        return EXIT_FAILURE;
+    }
+    
     // Play the music
-    music.play();
+    //music.play();
     
     sf::Clock waitClock,moveClock;
     sf::Time waitTime=waitClock.restart(),moveTime=moveClock.restart();
@@ -56,18 +62,16 @@ void Controller::init(){
             }
         }
         
-        auto rods=myView.getRods();
-        auto disks=myView.getDisks();
-        
-
         // Clear screen
         myWindow.clear(sf::Color::Black);
         
         // draw rods
+        auto rods=myView.getRods();
         for (auto rod: rods)
             myWindow.draw(rod.getShape());
         
         // draw disks
+        auto disks=myView.getDisks();
         for (auto disk: disks){
             myWindow.draw(disk.getShape());
         }
@@ -83,7 +87,7 @@ void Controller::init(){
             
             waitDuration+=waitTime.asSeconds();
             
-            if (waitDuration > 100.0f){ // WAITING to MOVING
+            if (waitDuration > 100.0f){ // *** WAITING to MOVING ***
                 moveDuration=0;
                 myState=MOVING;
             }
@@ -98,13 +102,14 @@ void Controller::init(){
             moveDuration+=moveTime.asSeconds();
             
             if (moveDuration > 100.0f){
-                if (currMove.diskID==Move::DONE){ // remain in DONE state
+                if (currMove.diskID==Move::DONE){ // *** DONE ***
                     myState=DONE;
                 } else {
                     myView.moveDisk(currMove);
+                    moveSound.play();
                     
                     waitDuration=0;
-                    myState=WAITING;
+                    myState=WAITING; // *** MOVING to WAITING ***
                 }
             }
         }

@@ -18,9 +18,11 @@ using namespace std;
 
 View::View(Model& model, sf::Vector2i dim) :
 myHeight{dim.y}, myWidth{dim.x},
-myColors{sf::Color(255,0,0),sf::Color(255,127,0),sf::Color(255,255,0),sf::Color(0,255,0),sf::Color(0,0,255),sf::Color(148,0,211)}
+myColors{sf::Color(255,0,0),sf::Color(255,127,0),sf::Color(255,255,0),
+         sf::Color(0,255,0),sf::Color(0,0,255),sf::Color(148,0,211),
+}
 {
-    // rods
+    // generate rod shapes and push onto vector
     int space=myWidth/4,x=space,y=100;
     for (int i=0; i<model.RODS; ++i){
         Rod rod(sf::Vector2f(x,y),sf::Vector2f(5,400),sf::Color(250,250,250));
@@ -28,7 +30,8 @@ myColors{sf::Color(255,0,0),sf::Color(255,127,0),sf::Color(255,255,0),sf::Color(
         x+=space;
     }
     
-    // disks ( draw bottom up, then reverse order, so that index 0 is the smallest disk on top )
+    // generate disk shapes and push onto vector
+    // draw disks bottom up, then reverse order, so that index 0 is the smallest disk on top
     for (int i=model.getDiskCount()-1; i>=0; --i){
         int x=myRods[model.SRC].getShape().getPosition().x,y=myRods[model.SRC].getDiskHeight();
         int diskWidth=(i+1)*Disk::WIDTH_FACTOR;

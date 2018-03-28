@@ -17,11 +17,13 @@ class Model {
 public:
     
     /* constructors */
-    Model(unsigned int disks) : myCurrMoveIndex{-1}/*, myDisks(RODS,std::vector<int>())*/ {
+    Model(unsigned int disks) : myCurrMoveIndex{-1} {
         myDiskCount=disks>MAX_DISKS ? MAX_DISKS : disks;
         generateMoves();
     }
     Model(const Model& src) : Model(src.getDiskCount()) {}
+    
+    Model& operator=(const Model& rhs)=default;
     
     /* accessors */
     std::vector<std::vector<int>> getDisks() const;

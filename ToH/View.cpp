@@ -28,7 +28,7 @@ myColors{sf::Color(255,0,0),sf::Color(255,127,0),sf::Color(255,255,0),sf::Color(
         x+=space;
     }
     
-    // disks ( draw bottom up, then reverse, so that index 0 is the smallest disk on top )
+    // disks ( draw bottom up, then reverse order, so that index 0 is the smallest disk on top )
     for (int i=model.getDiskCount()-1; i>=0; --i){
         int x=myRods[model.SRC].getShape().getPosition().x,y=myRods[model.SRC].getDiskHeight();
         int diskWidth=(i+1)*Disk::WIDTH_FACTOR;
@@ -40,6 +40,14 @@ myColors{sf::Color(255,0,0),sf::Color(255,127,0),sf::Color(255,255,0),sf::Color(
     }
     reverse(myDisks.begin(),myDisks.end());
     
+}
+
+void View::moveDisk(Move& m){
+    int x=myRods[m.dstRod].getShape().getPosition().x-myDisks[m.diskID].getShape().getSize().x/2;
+    int y=myRods[m.dstRod].getDiskHeight();
+    myDisks[m.diskID].setPosition(sf::Vector2f(x,y));
+    myRods[m.srcRod].decrementDiskHeight(Disk::HEIGHT);
+    myRods[m.dstRod].incrementDiskHeight(Disk::HEIGHT);
 }
 
 std::vector<Rod> View::getRods() const {

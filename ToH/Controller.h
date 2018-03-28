@@ -21,6 +21,9 @@ public:
     Controller(Model model, View view, sf::Vector2i dim)
     : myWindow(sf::VideoMode(dim.x,dim.y), "Towers of Hanoi"), myModel{model}, myView{view}, myState{WAITING} {}
     
+    Controller(const Controller& src)=delete;
+    Controller& operator=(const Controller& rhs)=delete;
+    
     void init();
     
     /* accessors */

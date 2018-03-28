@@ -59,6 +59,22 @@ void Controller::init(){
         auto rods=myView.getRods();
         auto disks=myView.getDisks();
         
+
+        // Clear screen
+        myWindow.clear(sf::Color::Black);
+        
+        // draw rods
+        for (auto rod: rods)
+            myWindow.draw(rod.getShape());
+        
+        // draw disks
+        for (auto disk: disks){
+            myWindow.draw(disk.getShape());
+        }
+        
+        // Update the window
+        myWindow.display();
+        
         
         if (myState==WAITING){
             if (waitDuration==0){
@@ -67,104 +83,30 @@ void Controller::init(){
             
             waitDuration+=waitTime.asSeconds();
             
-            if (waitDuration > 10.0f){ // WAITING to MOVING
-                waitDuration=0;
+            if (waitDuration > 100.0f){ // WAITING to MOVING
+                moveDuration=0;
                 myState=MOVING;
-                
-                /*
-                for (int i=0; i<disks.size(); ++i){
-                    std::cout << "disk " << i
-                    << ": x=" << disks[i].getShape().getPosition().x
-                    << " y=" << disks[i].getShape().getPosition().y << std::endl;
-                }
-                std::cout << std::endl;
-                */
-                
-                currMove=myModel.getNextMove();
-            
-                if (currMove.diskID==Move::DONE){
-                    myState=DONE;
-                } else {
-                    myView.moveDisk(currMove);
-                    
-                    /*
-                    disks=myView.getDisks();
-                    for (int i=0; i<disks.size(); ++i){
-                        //for (auto disk: disks){
-                        std::cout << "disk " << i
-                        << ": x=" << disks[i].getShape().getPosition().x
-                        << " y=" << disks[i].getShape().getPosition().y << std::endl;
-                    }
-                    std::cout << std::endl << std::endl << std::endl;
-                    */
-                    myState=WAITING;
-                }
-                
             }
         }
         
-        /*
         if (myState==MOVING){
             if (moveDuration==0){
-                currMove=myModel.getNextMove();
-                
-                std::cout << "current move: "
-                << " disk=" << currMove.diskID
-                << " src=" << currMove.srcRod
-                << " dst=" << currMove.dstRod
-                << std::endl;
-                
-                disks[currMove.diskID].setState(Disk::MOVING);
                 moveTime=moveClock.restart();
-            }
-
-            if (disks[currMove.diskID].getState()==Disk::WAITING){ // MOVING to WAITING
-                rods[currMove.srcRod].decrementDiskHeight(Disk::HEIGHT);
-                rods[currMove.dstRod].incrementDiskHeight(Disk::HEIGHT);
-                waitDuration=0;
-                myState=WAITING;
-                
-                
+                currMove=myModel.getNextMove();
             }
             
             moveDuration+=moveTime.asSeconds();
             
             if (moveDuration > 100.0f){
-                
-                for (int i=0; i<disks.size(); ++i){
-                    //for (auto disk: disks){
-                    std::cout << "disk " << i
-                    << ": x=" << disks[i].getShape().getPosition().x
-                    << " y=" << disks[i].getShape().getPosition().y << std::endl;
-                }
-                
-                moveDuration=0;
-                disks[currMove.diskID].move(currMove,rods);
-                
-                for (int i=0; i<disks.size(); ++i){
-                    //for (auto disk: disks){
-                    std::cout << "disk " << i
-                    << ": x=" << disks[i].getShape().getPosition().x
-                    << " y=" << disks[i].getShape().getPosition().y << std::endl;
+                if (currMove.diskID==Move::DONE){ // remain in DONE state
+                    myState=DONE;
+                } else {
+                    myView.moveDisk(currMove);
+                    
+                    waitDuration=0;
+                    myState=WAITING;
                 }
             }
         }
-         */
-        
-        
-        // Clear screen
-        myWindow.clear(sf::Color::Black);
-        
-        
-        for (auto rod: rods)
-            myWindow.draw(rod.getShape());
-        
-
-        for (auto disk: disks){
-            myWindow.draw(disk.getShape());
-        }
-        
-        // Update the window
-        myWindow.display();
-    }
+    } // game loop
 }

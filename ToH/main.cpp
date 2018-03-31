@@ -24,7 +24,7 @@
 int main(int, char const**)
 {
     
-    sf::Vector2i dim(1500,500);
+    sf::Vector2i dim(1200,300);
     int disks=6;
     Model model(disks);
     View view(model,dim);

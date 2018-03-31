@@ -25,7 +25,7 @@ myColors{sf::Color(255,0,0),sf::Color(255,127,0),sf::Color(255,255,0),
     // generate rod shapes and push onto vector
     int space=myWidth/4,x=space,y=100;
     for (int i=0; i<model.RODS; ++i){
-        Rod rod(sf::Vector2f(x,y),sf::Vector2f(5,400),sf::Color(250,250,250));
+        Rod rod(sf::Vector2f(x,y),sf::Vector2f(5,dim.y-y),sf::Color(250,250,250));
         myRods.push_back(rod);
         x+=space;
     }

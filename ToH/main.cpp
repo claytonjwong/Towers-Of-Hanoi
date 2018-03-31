@@ -30,6 +30,7 @@ int main(int, char const**)
     View view(model,dim);
     Controller controller(model,view,dim);
     controller.init();
-
+    controller.play();
+    
     return EXIT_SUCCESS;
 }

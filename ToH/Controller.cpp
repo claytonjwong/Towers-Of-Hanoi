@@ -15,103 +15,104 @@
 #include "View.h"
 
 void Controller::init(){
-    
-    // Set the Icon
+    setIcon();
+    initSound();
+    changeState_WAITING();
+}
+
+void Controller::play(){
+    while (myWindow.isOpen()) {
+        processEvents();
+        myView.draw(myWindow);
+        processState();
+    }
+}
+
+void Controller::setIcon(){
     sf::Image icon;
     if (!icon.loadFromFile(resourcePath() + "icon.png")) {
         return EXIT_FAILURE;
     }
     myWindow.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-    
-    // Load a music to play
-    sf::Music music;
-    if (!music.openFromFile(resourcePath() + "nice_music.ogg")) {
-        return EXIT_FAILURE;
-    }
-    
-    // load move sound to play
-    sf::Music moveSound;
-    if (!moveSound.openFromFile(resourcePath() + "move.ogg")) {
-        return EXIT_FAILURE;
-    }
-    
-    // Play the music
-    //music.play();
-    
-    sf::Clock waitClock,moveClock;
-    sf::Time waitTime=waitClock.restart(),moveTime=moveClock.restart();
-    float waitDuration=0,moveDuration=0;
-    myState=WAITING;
-    
-    Move currMove;
-    // Start the game loop
-    while (myWindow.isOpen())
-    {
-        // Process events
-        sf::Event event;
-        while (myWindow.pollEvent(event))
-        {
-            // Close window: exit
-            if (event.type == sf::Event::Closed) {
-                myWindow.close();
-            }
-            
-            // Escape pressed: exit
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                myWindow.close();
-            }
-        }
-        
-        // Clear screen
-        myWindow.clear(sf::Color::Black);
-        
-        // draw rods
-        auto rods=myView.getRods();
-        for (auto rod: rods)
-            myWindow.draw(rod.getShape());
-        
-        // draw disks
-        auto disks=myView.getDisks();
-        for (auto disk: disks){
-            myWindow.draw(disk.getShape());
-        }
-        
-        // Update the window
-        myWindow.display();
-        
-        
-        if (myState==WAITING){
-            if (waitDuration==0){
-                waitTime=waitClock.restart();
-            }
-            
-            waitDuration+=waitTime.asSeconds();
-            
-            if (waitDuration > 100.0f){ // *** WAITING to MOVING ***
-                moveDuration=0;
-                myState=MOVING;
-            }
-        }
-        
-        if (myState==MOVING){
-            if (moveDuration==0){
-                moveTime=moveClock.restart();
-                currMove=myModel.getNextMove();
-            }
-            
-            moveDuration+=moveTime.asSeconds();
-            
-            if (moveDuration > 100.0f){
-                if (currMove.diskID==Move::DONE){ // *** DONE ***
-                    myState=DONE;
-                } else {
-                    myView.moveDisk(currMove);
-                    moveSound.play();
-                    
-                    waitDuration=0;
-                    myState=WAITING; // *** MOVING to WAITING ***
-                }
-            }
-        }
-    } // game loop
 }
+
+void Controller::initSound(){
+    if (!myMoveSound.openFromFile(resourcePath() + "move.ogg")) {
+        return EXIT_FAILURE;
+    }
+}
+
+void Controller::processEvents() {
+    sf::Event event;
+    while (myWindow.pollEvent(event)) {
+        
+        // Close window: exit
+        if (event.type == sf::Event::Closed) {
+            myWindow.close();
+        }
+        
+        // Escape pressed: exit
+        if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
+            myWindow.close();
+        }
+    }
+}
+
+void Controller::processState(){
+    
+    if (myState==WAITING)
+        processState_WAITING();
+    
+    if (myState==MOVING)
+        processState_MOVING();
+    
+}
+
+void Controller::changeState_WAITING(){
+    myState=WAITING;
+    myWaitTime=myWaitClock.restart();
+    myWaitDuration=myWaitTime.asSeconds();
+}
+
+void Controller::processState_WAITING(){
+
+    myWaitDuration+=myWaitTime.asSeconds();
+    
+    if (myWaitDuration > 100.0f)
+        changeState_MOVING();
+}
+
+void Controller::changeState_MOVING(){
+    myState=MOVING;
+    myMoveTime=myMoveClock.restart();
+    myMoveDuration=myMoveTime.asSeconds();
+    myCurrMove=myModel.getNextMove();
+}
+
+void Controller::processState_MOVING(){
+
+    myMoveDuration+=myMoveTime.asSeconds();
+    
+    if (myMoveDuration > 100.0f){
+        if (myCurrMove.diskID==Move::DONE){ // *** DONE ***
+            changeState_DONE();
+        } else {
+            myView.moveDisk(myCurrMove);
+            myMoveSound.play();
+            changeState_WAITING();
+        }
+    }
+}
+
+void Controller::changeState_DONE(){
+    myState=DONE;
+}
+
+void Controller::processState_DONE(){
+    
+}
+
+
+
+
+

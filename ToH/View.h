@@ -24,6 +24,8 @@ public:
     /* helpers */
     void moveDisk(Move& m);
     
+    void draw(sf::RenderWindow& myWindow);
+    
     /* accessors */
     //int getDirection() const;
     std::vector<Rod> getRods() const;

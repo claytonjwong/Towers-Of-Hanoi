@@ -52,6 +52,23 @@ void View::moveDisk(Move& m){
     myRods[m.dstRod].incrementDiskHeight(Disk::HEIGHT);
 }
 
+void View::draw(sf::RenderWindow& window){
+    
+    // Clear screen
+    window.clear(sf::Color::Black);
+    
+    // draw rods
+    for (auto rod: myRods)
+        window.draw(rod.getShape());
+    
+    // draw disks
+    for (auto disk: myDisks)
+        window.draw(disk.getShape());
+    
+    // Update the window
+    window.display();
+}
+
 std::vector<Rod> View::getRods() const {
     return myRods;
 }

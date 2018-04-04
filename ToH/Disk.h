@@ -19,7 +19,6 @@ public:
     static const int HEIGHT=15,WIDTH_FACTOR=50;
     
     enum State { WAITING, MOVING };
-    enum MoveState { STATIONARY, MOVING_UP, MOVING_SIDEWAYS, MOVING_DOWN };
     
     Disk(sf::Vector2f pos, sf::Vector2f dim, sf::Color& color);
 
@@ -30,12 +29,9 @@ public:
     
     void setPosition(sf::Vector2f pos);
     
-    
-    
 private:
     sf::RectangleShape myShape;
     State myState=WAITING;
-    int myMoveState=STATIONARY;
 };
 
 #endif /* Disk_h */

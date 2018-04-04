@@ -24,6 +24,16 @@ sf::RectangleShape Rod::getShape(){
     return myShape;
 }
 
+//
+// these functions incrementDiskHeight/decrementDiskHeight
+// are purposefully written "backwards"
+//
+// (i.e. increment performs subtraction, and decrement performs addition)
+//
+// myHeight is the y-coordinate representing the disk height
+// which is smaller as the disk height in incremented
+// and is larger as the disk height is decremented
+//
 void Rod::incrementDiskHeight(int amount) {
     myHeight-=amount;
 }

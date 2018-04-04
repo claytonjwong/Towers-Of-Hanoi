@@ -30,28 +30,20 @@ void Controller::play(){
 
 void Controller::setIcon(){
     sf::Image icon;
-    if (!icon.loadFromFile(resourcePath() + "icon.png")) {
-        return EXIT_FAILURE;
-    }
+    icon.loadFromFile(resourcePath() + "icon.png");
     myWindow.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
 
 void Controller::initSound(){
-    if (!myMoveSound.openFromFile(resourcePath() + "move.ogg")) {
-        return EXIT_FAILURE;
-    }
+    myMoveSound.openFromFile(resourcePath() + "move.ogg");
 }
 
 void Controller::processEvents() {
     sf::Event event;
     while (myWindow.pollEvent(event)) {
-        
-        // Close window: exit
         if (event.type == sf::Event::Closed) {
             myWindow.close();
         }
-        
-        // Escape pressed: exit
         if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
             myWindow.close();
         }
@@ -59,13 +51,10 @@ void Controller::processEvents() {
 }
 
 void Controller::processState(){
-    
     if (myState==WAITING)
         processState_WAITING();
-    
     if (myState==MOVING)
         processState_MOVING();
-    
 }
 
 void Controller::changeState_WAITING(){
@@ -109,7 +98,7 @@ void Controller::changeState_DONE(){
 }
 
 void Controller::processState_DONE(){
-    
+    // no-op
 }
 
 

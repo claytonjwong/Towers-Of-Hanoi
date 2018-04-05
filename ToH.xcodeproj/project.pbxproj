@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9294D482076B73B0048EE5C /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9294D3F2076B7370048EE5C /* Main.cpp */; };
+		A9294D492076B73B0048EE5C /* TestResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9294D402076B7380048EE5C /* TestResult.cpp */; };
+		A9294D4A2076B73B0048EE5C /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9294D412076B7380048EE5C /* Test.cpp */; };
+		A9294D4B2076B73B0048EE5C /* TestRegistry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9294D442076B73A0048EE5C /* TestRegistry.cpp */; };
+		A9294D4C2076B73B0048EE5C /* Failure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9294D462076B73A0048EE5C /* Failure.cpp */; };
+		A9294D512076B9EB0048EE5C /* DiskTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9294D502076B9EB0048EE5C /* DiskTest.cpp */; };
+		A9294D532076BD0B0048EE5C /* ModelTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9294D522076BD0B0048EE5C /* ModelTest.cpp */; };
+		A9294D572076C3880048EE5C /* RodTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9294D562076C3880048EE5C /* RodTest.cpp */; };
 		A9808AC22065E55800D5F373 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = A9808AC12065E55800D5F373 /* ResourcePath.mm */; };
 		A9808AC52065E55800D5F373 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9808AC42065E55800D5F373 /* main.cpp */; };
 		A9808AC82065E55800D5F373 /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A9808AC72065E55800D5F373 /* cute_image.jpg */; };
@@ -21,6 +29,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A9294D3E2076B7370048EE5C /* TestRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRegistry.h; sourceTree = "<group>"; };
+		A9294D3F2076B7370048EE5C /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		A9294D402076B7380048EE5C /* TestResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestResult.cpp; sourceTree = "<group>"; };
+		A9294D412076B7380048EE5C /* Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
+		A9294D422076B7390048EE5C /* TestResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestResult.h; sourceTree = "<group>"; };
+		A9294D432076B7390048EE5C /* Failure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Failure.h; sourceTree = "<group>"; };
+		A9294D442076B73A0048EE5C /* TestRegistry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestRegistry.cpp; sourceTree = "<group>"; };
+		A9294D452076B73A0048EE5C /* TestHarness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHarness.h; sourceTree = "<group>"; };
+		A9294D462076B73A0048EE5C /* Failure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Failure.cpp; sourceTree = "<group>"; };
+		A9294D472076B73B0048EE5C /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		A9294D502076B9EB0048EE5C /* DiskTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DiskTest.cpp; sourceTree = "<group>"; };
+		A9294D522076BD0B0048EE5C /* ModelTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ModelTest.cpp; sourceTree = "<group>"; };
+		A9294D562076C3880048EE5C /* RodTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RodTest.cpp; sourceTree = "<group>"; };
 		A9808ABC2065E55800D5F373 /* ToH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9808AC02065E55800D5F373 /* ToH-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ToH-Info.plist"; sourceTree = "<group>"; };
 		A9808AC12065E55800D5F373 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
@@ -54,11 +75,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A9294D4D2076B7520048EE5C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A9294D462076B73A0048EE5C /* Failure.cpp */,
+				A9294D432076B7390048EE5C /* Failure.h */,
+				A9294D3F2076B7370048EE5C /* Main.cpp */,
+				A9294D412076B7380048EE5C /* Test.cpp */,
+				A9294D472076B73B0048EE5C /* Test.h */,
+				A9294D452076B73A0048EE5C /* TestHarness.h */,
+				A9294D442076B73A0048EE5C /* TestRegistry.cpp */,
+				A9294D3E2076B7370048EE5C /* TestRegistry.h */,
+				A9294D402076B7380048EE5C /* TestResult.cpp */,
+				A9294D422076B7390048EE5C /* TestResult.h */,
+				A9294D502076B9EB0048EE5C /* DiskTest.cpp */,
+				A9294D522076BD0B0048EE5C /* ModelTest.cpp */,
+				A9294D562076C3880048EE5C /* RodTest.cpp */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		A9294D4E2076B81F0048EE5C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A9808ADA2067276700D5F373 /* Controller.cpp */,
+				A9808B19206AD3C500D5F373 /* Disk.cpp */,
+				A9808AC42065E55800D5F373 /* main.cpp */,
+				A9808ADC206728BB00D5F373 /* Model.cpp */,
+				A9808B1C206AD3CE00D5F373 /* Rod.cpp */,
+				A9808AD8206722BE00D5F373 /* View.cpp */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		A9294D4F2076B8540048EE5C /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				A9808AD62065FCD400D5F373 /* Controller.h */,
+				A9808B1A206AD3C500D5F373 /* Disk.h */,
+				A9808AD42065FB4900D5F373 /* Model.h */,
+				A9808AD52065FB7200D5F373 /* Move.h */,
+				A9808AC32065E55800D5F373 /* ResourcePath.hpp */,
+				A9808AC12065E55800D5F373 /* ResourcePath.mm */,
+				A9808B1D206AD3CE00D5F373 /* Rod.h */,
+				A9808AD72065FD4500D5F373 /* View.h */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		A9808AB22065E55700D5F373 = {
 			isa = PBXGroup;
 			children = (
-				A9808ABE2065E55800D5F373 /* ToH */,
+				A9294D4F2076B8540048EE5C /* Header */,
 				A9808ABD2065E55800D5F373 /* Products */,
+				A9294D4E2076B81F0048EE5C /* Source */,
+				A9294D4D2076B7520048EE5C /* Tests */,
+				A9808ABE2065E55800D5F373 /* ToH */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,22 +145,8 @@
 		A9808ABE2065E55800D5F373 /* ToH */ = {
 			isa = PBXGroup;
 			children = (
-				A9808B1C206AD3CE00D5F373 /* Rod.cpp */,
-				A9808B1D206AD3CE00D5F373 /* Rod.h */,
-				A9808AC12065E55800D5F373 /* ResourcePath.mm */,
-				A9808AC32065E55800D5F373 /* ResourcePath.hpp */,
-				A9808AC42065E55800D5F373 /* main.cpp */,
 				A9808AC62065E55800D5F373 /* Resources */,
 				A9808ABF2065E55800D5F373 /* Supporting Files */,
-				A9808AD42065FB4900D5F373 /* Model.h */,
-				A9808AD52065FB7200D5F373 /* Move.h */,
-				A9808AD62065FCD400D5F373 /* Controller.h */,
-				A9808AD72065FD4500D5F373 /* View.h */,
-				A9808AD8206722BE00D5F373 /* View.cpp */,
-				A9808ADA2067276700D5F373 /* Controller.cpp */,
-				A9808ADC206728BB00D5F373 /* Model.cpp */,
-				A9808B19206AD3C500D5F373 /* Disk.cpp */,
-				A9808B1A206AD3C500D5F373 /* Disk.h */,
 			);
 			path = ToH;
 			sourceTree = "<group>";
@@ -200,13 +258,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9294D4C2076B73B0048EE5C /* Failure.cpp in Sources */,
+				A9294D572076C3880048EE5C /* RodTest.cpp in Sources */,
+				A9294D512076B9EB0048EE5C /* DiskTest.cpp in Sources */,
 				A9808B1B206AD3C500D5F373 /* Disk.cpp in Sources */,
+				A9294D4B2076B73B0048EE5C /* TestRegistry.cpp in Sources */,
 				A9808AD9206722BE00D5F373 /* View.cpp in Sources */,
+				A9294D532076BD0B0048EE5C /* ModelTest.cpp in Sources */,
 				A9808AC52065E55800D5F373 /* main.cpp in Sources */,
 				A9808ADD206728BB00D5F373 /* Model.cpp in Sources */,
 				A9808B1E206AD3CE00D5F373 /* Rod.cpp in Sources */,
 				A9808AC22065E55800D5F373 /* ResourcePath.mm in Sources */,
+				A9294D492076B73B0048EE5C /* TestResult.cpp in Sources */,
+				A9294D482076B73B0048EE5C /* Main.cpp in Sources */,
 				A9808ADB2067276700D5F373 /* Controller.cpp in Sources */,
+				A9294D4A2076B73B0048EE5C /* Test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

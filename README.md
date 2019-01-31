@@ -18,8 +18,6 @@ A recursive algorithm moves N-1 disks from the first rod to the second rod using
 
 "go" is my subjectively preferred nomenclature for recursive function designation.  Just for fun, I wrote "go2" as a single-line version of "go" using the comma operator.
 
-https://github.com/claytonjwong/Sandbox-CPP/blob/master/ToH_example_algorithm/ToH_example_algorithm/ToH_example_algorithm.cpp
-
 
 ![](http://cpp.claytonjwong.com/ToH_codeshot.png)  
 

@@ -21,10 +21,7 @@ A recursive algorithm moves N-1 disks from the first rod to the second rod using
 
 ![](http://cpp.claytonjwong.com/ToH_codeshot.png)  
 
-# Visualization via Screen Recording:
-
-![](http://cpp.claytonjwong.com/ToH_Demo.mov)
-http://cpp.claytonjwong.com/ToH_Demo.mov
+# Visualization via [Screen Recording](http://cpp.claytonjwong.com/ToH_Demo.mov)
 
 "Seeing is Believing" [-Far Seer](http://classic.battle.net/war3/orc/units/farseer.shtml)
 *   Capstone project from [CPROGRM 711 A Wi 18: C++ Programming: Introduction](https://www.pce.uw.edu/courses/c-plus-plus-programming-introduction)
